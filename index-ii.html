@@ -1,0 +1,4427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a5c2b">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="SDA Solfa">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0a5c2b">
+    <title>SDA HYMN TONIC SOLFA</title>
+    <link rel="icon" href="sdalogo.png">
+    <link rel="stylesheet" href="style-ii.css">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+     <header>
+     <a href="#"><img src="sdalogo.jpg" alt=""></a>
+     <h1>SDA HYMN TONIC<br> SOLFA</h1>  
+   <div class="navMenu" id="navMenu">
+    <ul>
+     <li>
+      <a href="">
+      <i class="bx bx-home-alt-2"> Home</i>
+      </a>
+     </li>
+     <li>
+      <a href="javascript:void(0)"
+onclick="showFavorites()">
+      <i class="bx bx-like"> Favorites</i>
+      </a>
+     </li>
+     <li>
+      <a href="https://kad-portfolio-01.netlify.app/">
+      <i class='bx bx-laptop'> Developer</i>
+      </a>
+     </li>
+    </ul>   
+    <footer>
+    copyright:© 2026 All right reserved<br>
+    Seventh day Adventist church<br>
+    | This template is made by <a href="https://kad-portfolio-01.netlify.app/">KAD</a>
+   </footer>
+   </div>
+   <i class='bx bx-menu' id="menuIcon" onclick="toggleMenu()"></i>
+   <button id="installBtn" style="display:none;">
+    Install SDA Solfa
+</button>
+    </header>
+    
+    <!-- INPUT FIELD -->
+   <div class="search-area" id="searchArea">
+     <i class='bx bx-dialpad' id="searchIcon" onclick="showKeypad()"></i>       
+     <input 
+      type="text" 
+      id="searchBox" 
+      class="searchBox"
+      placeholder="SEARCH HYMN"
+      onclick="showTextpad()"
+      onkeyup="searchHymn()"
+      readonly>
+   </div>
+
+<!-- NUMBER KEYPAD -->
+<div class="keypad" id="keypad">
+    <button onclick="addNumber('1')">1</button>
+    <button onclick="addNumber('2')">2</button>
+    <button onclick="addNumber('3')">3</button>
+    <button onclick="addNumber('4')">4</button>
+    <button onclick="addNumber('5')">5</button>
+    <button onclick="addNumber('6')">6</button>
+    <button onclick="addNumber('7')">7</button>
+    <button onclick="addNumber('8')">8</button>
+    <button onclick="addNumber('9')">9</button>
+    <button onclick="clearNumber()">Clear</button>
+    <button onclick="addNumber('0')">0</button>
+    <button onclick="numberSearch()"><i class="bx bx-search-alt"></i></button>
+</div>
+
+<!-- TEXT KEYPAD -->
+<div class="textpad" id="textpad">
+
+    <div class="row">
+        <button class="letter" data-letter="q" onclick="addLetter('q')">Q</button>
+        <button class="letter" data-letter="w" onclick="addLetter('w')">W</button>
+        <button class="letter" data-letter="e" onclick="addLetter('e')">E</button>
+        <button class="letter" data-letter="r" onclick="addLetter('r')">R</button>
+        <button class="letter" data-letter="t" onclick="addLetter('t')">T</button>
+        <button class="letter" data-letter="y" onclick="addLetter('y')">Y</button>
+        <button class="letter" data-letter="u" onclick="addLetter('u')">U</button>
+        <button class="letter" data-letter="i" onclick="addLetter('i')">I</button>
+        <button class="letter" data-letter="o" onclick="addLetter('o')">O</button>
+        <button class="letter" data-letter="p" onclick="addLetter('p')">P</button>
+    </div>
+
+    <div class="row">
+        <button class="letter" data-letter="a" onclick="addLetter('a')">A</button>
+        <button class="letter" data-letter="s" onclick="addLetter('s')">S</button>
+        <button class="letter" data-letter="d" onclick="addLetter('d')">D</button>
+        <button class="letter" data-letter="f" onclick="addLetter('f')">F</button>
+        <button class="letter" data-letter="g" onclick="addLetter('g')">G</button>
+        <button class="letter" data-letter="h" onclick="addLetter('h')">H</button>
+        <button class="letter" data-letter="j" onclick="addLetter('j')">J</button>
+        <button class="letter" data-letter="k" onclick="addLetter('k')">K</button>
+        <button class="letter" data-letter="l" onclick="addLetter('l')">L</button>
+    </div>
+
+    <div class="row">
+        <button class="letter" data-letter="z" onclick="addLetter('z')">Z</button>
+        <button class="letter" data-letter="x" onclick="addLetter('x')">X</button>
+        <button class="letter" data-letter="c" onclick="addLetter('c')">C</button>
+        <button class="letter" data-letter="v" onclick="addLetter('v')">V</button>
+        <button class="letter" data-letter="b" onclick="addLetter('b')">B</button>
+        <button class="letter" data-letter="n" onclick="addLetter('n')">N</button>
+        <button class="letter" data-letter="m" onclick="addLetter('m')">M</button>
+    </div>
+
+    <div class="row">
+        <button class="back" onclick="backspace()">⌫</button>
+        <button class="space" onclick="addSpace()">Space</button>
+        <button class="clear" onclick="clearText()">Clear</button>
+        <button class="search" onclick="searchHymn()"><i class="bx bx-search-alt"></i></button>
+    </div>
+
+</div>
+
+<!-- INTERFACE DIVERS -->
+<div class="interface-flex">
+
+  <div class="interface">
+    <h3>WELCOME</h3>
+    <ul>
+      <li>Search hymns by number</li>
+      <li>Search hymns by title</li>
+      <li>Fast and easy navigation</li>
+    </ul>
+  </div>
+  <div class="interface">
+    <h3>HYMN OF THE DAY</h3>
+    <ul>
+      <li>Today's Hymn</li>
+      <li>No. 164</li>
+      <li>There is a green hills</li>
+      <nav><li><a href="#" onclick="openHymn('hymnoftheday')">Tap to view</a></li></nav>
+    </ul>
+  </div>
+  <div class="interface">
+    <h3>ABOUT</h3>
+    <ul>
+      <li>SDA Hymn Tonic Solfa</li>
+      <li>Online hymn companion</li>
+      <li>Designed for easy learning</li>
+    </ul>
+  </div>
+  <div class="interface">
+    <h3>COMING SOON</h3>
+    <ul>
+      <li>Favorite hymns</li>
+      <li>Dark mode</li>
+      <li>Audio playback</li>
+    </ul>
+  </div>                
+  <div class="interface">
+    <h3>VERSE OF THE DAY</h3>
+    <ul>
+      <li>"Let everything that has breath praise the Lord"</li>
+      <li>Psalm 150:6</li>
+    </ul>
+  </div>
+
+</div>
+
+   <!-- FAVORITE TITLE -->
+    <div id="favoriteTitle" class="favorite-title">
+    <h2>FAVORITE HYMNS</h2>
+   </div>
+    <!-- TONIC SOLFA -->
+    <div class="tonic-solfa">
+     <span><b>1. PRAISE TO THE LORD</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+     DDSMRDTL:SLTDRD<br>
+     DDSMRDTL:SLTDRD<br>
+     SSSL:MFSSFMR<br>
+     SLTD:RMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>2. ALL CREATURES OF OUR GOD</b></span>
+     <h1 class="tonic-key">KEY D</h1>
+     <p>
+     DDRMDMFS:DDRMDMFS<br>
+     DLLS:DTLS<br>
+     DDSSFMFS:DDSSFMFS<br>
+     FMRD(x2):DTLTTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 3 -->
+     <span><b>3.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>4. PRAISE MY SOUL</b></span>
+     <h1 class="tonic-key">KEY D</h1>
+     <p>
+     SSSDTLS:FFLSMFR<br>
+     MMMMLSSF:SLTDMFS<br>
+     DTLS:DTLS<br>
+     LSFRDTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 5 -->
+     <span><b>5.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 6 -->
+     <span><b>6.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 7 -->
+     <span><b>7.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>8. WE GATHER TOGETHER</b></span>
+     <h1 class="tonic-key">KEY C</h1>
+     <p>
+     SSLSMFS:FMRMD<br>
+     SSLTDRTLSLS<br>
+     SSLTDSSS:LFSMD<br>
+     DFSLFS:FMFRTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 9 -->
+     <span><b>9.</b></span>
+    </div>
+    
+      <div class="tonic-solfa">
+     <span><b>10. COME CHRISTIAN JOIN TO SING</b></span>
+     <h1 class="tonic-key">KEY A</h1>
+     <p>
+     DTDLDS:MDFRDTD<br>
+     DTDLDS:MDFRDTD<br>
+     MMRMFMR:MMRMFMR<br>
+     DTDLDS:MDFRDTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 11 -->
+     <span><b>11.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>12. JOYFUL JOYFUL</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+     MMFSSFMR:DDRMMRR<br>
+     MMFSSFMR:DDRMRDD<br>
+     RRMDRMFMD:RMFMRDRS<br>
+     MMFSSFMR:DDRMRDD 
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 13 -->
+     <span><b>13.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 14 -->
+     <span><b>14.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 15 -->
+     <span><b>15.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>16. ALL PEOPLE THAT ON EARTH DO DWELL</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+     DTDS:DTDR<br>
+     DMDL:MDRTD<br>
+     RRRM:DFMR<br>
+     DMDL:MDRTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 17 -->
+     <span><b>17.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 18 -->
+     <span><b>18.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 19 -->
+     <span><b>19.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <!-- 20 -->    
+  <span><b>20.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>21. IMMORTAL INVISIBLE</b></span>
+    <h1 class="tonic-key">KEY G</h1>
+     <p>
+     DLFRTS:DMMRD<br>
+     DLFRTS:DMMRD<br>
+     DMMSMD:DMMSR<br>
+     MDLRTS:DMMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 22 -->
+     <span><b>22.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 23 -->
+     <span><b>23.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 24 -->
+     <span><b>24.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <!-- 25 -->
+     <span><b>25.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 26 -->
+     <span><b>26.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <!-- 27 -->
+     <span><b>27.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <!-- 28 -->
+    <span><b>28.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 29 -->
+     <span><b>29</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <!-- 30 -->
+     <span><b>30.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>31.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>32.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">        
+     <span><b>33.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>34.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+  <span><b>35.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>36.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>37.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>38.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>39. LORD IN THE MORNING</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+    <P>
+     DSSMM:DMR<br>
+     RMDFMF<br>
+     SLLS:MFMR<br>
+     DSMFMRD
+    </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>40.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">                
+     <span><b>41.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>42.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>43.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>44.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>45.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>46.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>47.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+      <span><b>48. SOFTLY NOW THE LIGHT OF DAY</b></span>
+      <h1 class="tonic-key">KEY Eb</h1>
+     <P>
+      MMMFSM;<br>
+      MMFMR;<br>
+      MMRDSM;<br>
+      MMRRD<br>
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>49.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>50. ABIDE WITH ME</b></span>
+     <h1 class="tonic-key">KEY Eb</h1>
+     <P>
+      MMRD:SLSSFM<br>
+      MFSLS:FRMFS<br>
+      MMRD:SSMFMR<br>
+      RMFMRDFMRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>51.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>52.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>53. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>54.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>55.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>56. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>57.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>58.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>59.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>60. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>61.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>62.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>63.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>64. LORD DISMISS US WITH THY BLESSINGS</b></span>
+     <h1 class="tonic-key">KEY Db</h1>
+     <P>
+      DTLSMLDSM:MRDLRDLD<br>
+      MMFSMFRMD:MMFSMFMR<br>
+      DTLS:MLDSM<br>
+      MRDLRDTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+      <div class="tonic-solfa">
+     <span><b>65. GOD BE WITH YOU</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <P>
+      M:MMMMMSRM<br>
+      L:LLLLLLS<br>
+      FLSMDRMRD<br>
+      <b>CHORUS:</b><br>
+      MFSDMRDLD:TLSMDRMRD<br>
+      MFSDMRDLD:DLSMDRMRD<br>
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>66.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>67.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>68.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>69.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>70.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>71. COME THOU ALMIGHTY</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <P>
+       SMDRTD:DRMFMR<br>
+       SMDS:RMFMRD<br>
+       RMFMRD:DMDSFM<br>
+       RDTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>72.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>73. HOLY HOLY HOLY</b></span>
+     <h1 class="tonic-key">KEY D</h1>
+     <p>
+      DDMMSS:LLLLSM<br>
+      SSSSDT:SRSLSSF<br>
+      DDMMSS:LLLLSFM<br>
+      DSSLM:SFRRTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>74.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>75.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>76.</b></span>
+    </div>
+    
+    
+    <div class="tonic-solfa">
+     <span><b>77.</b></span>
+    </div>
+   
+    <div class="tonic-solfa">
+     <span><b>78.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>79.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>80.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>81.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>82. BEFORE JEHOVAH'S THRONE</b></span>
+     <h1 class="tonic-key">KEY D</h1>
+     <p>
+      DMFSLTDTLS:SSSLSFMR<br>
+      MMRD:SDTLSFR<br>
+      SLTD:FMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>83. O WORSHIP THE KING</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <P>
+      SDDRM:SDRTD<br>
+      RMRDT:DRDTLS<br>
+      TDRMDL:FMRDS<br>
+      SLTDRS:MLRTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>84.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+      <span><b>85.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>86. HOW GREAT THOU ART</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+    <p>
+     SSSM:SSSLLFL<br>
+     LLLS:MSSFFM<br>
+     SSSM:SSSLLFL<br>
+     LLLS:MSSFFM <br>
+     <b>CHORUS:</b><br>
+     SSSM:RDTDLS<br>
+     DTDR:FLSM FS<br>
+     SSDMRDTDLS<br>
+     DTDR:MFLD
+    </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>87.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>88.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>89.</b></span>
+    </div>
+     
+       <div class="tonic-solfa">
+     <span><b>90.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>91.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>92.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>93. ALL THINGS BRIGHT AND BEAUTIFUL</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      SMMRDMM<br>
+      SMMFMR<br>
+      SMMSSFF<br>
+      FMDRTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>94.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>95.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>96.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>97.</b></span>
+    </div>
+     
+     
+    <div class="tonic-solfa">
+     <span><b>98.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>99. GOD WILL TAKE CARE OF YOU</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <p>
+      SLSSDRMRD:STLFLSM<br>
+      SLSSDRMRD:RDLSTRD<br>
+      <b>CHORUS:</b><br>
+      DTLLSS<br>
+      STLF:FLSM<br>
+      SSDDRDRM<br>
+      RDLS:TRD 
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>100. GREAT IS THY FAITHFULNESS</b></span>
+     <h1 class="tonic-key">KEY Db</h1>
+     <P>
+      MMMMRR:FFFFMM<br>
+      LTLS:FMRMFS<br>
+      SLTD:TLSFMMR<br>
+      LTDDSS:MFRD<br>
+      <b>CHORUS:</b><br>
+      SSRFMM:LLMSFF<br>
+      SLTDS:SLTDLS<br>
+      SLTDTL:SFMMR<br>
+      LTDDSS:MFRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>101.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>102.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>103. O GOD OUR HELP</b></span>
+     <h1 class="tonic-key">KEY C</h1>
+     <P>
+      SMLSDDTD:SDSLFS<br>
+      TDLDTDLT:SLDRTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>104.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>105.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>106.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>107.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>108. AMAZING GRACE</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      SDMDMRDLS<br>
+      SDMDMRS<br>
+      MSMSMD:SLDDLS<br>
+      SDMDMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>109. MARVELOUS GRACE</b></span>
+    <h1 class="tonic-key">KEY G</h1>
+    <p>
+    DTDRDRMRD:TTDR;s<br>
+    DDRM:DTDRDRMRD<br> 
+    RRMFMRDTD:md;<br>
+    FM;RRRRMRD:FM<br>
+    md;FM;RRMFMRDTD
+    </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>110.</b></span>
+    </div>
+    
+      <div class="tonic-solfa">
+     <span><b>111.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>112. LET US WITH A GLADSOME MIND</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <p>
+      MFSDTLS<br>
+      DRMSFMR<br>
+      MFSDTLS<br>
+      DRMFMRD<br>
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>113.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>114.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>115.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>116.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>117.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>118.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>119. ANGEL FORM THE REALM</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <P>
+      MMMMSSFMD:MMRMMSS<br>
+      FMMRMMMSSFMD<br>
+      MMRMMSSFM
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+  <span><b>120.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>121. GO TELL IT ON THE MOUNTAIN</b></span>
+    <h1 class="tonic-key">KEY F</h1>
+     <p>
+     DMSSLSM:DRRDRM<br>
+     DMSSLSM:DRRDLSF<br>
+     <b>CHORUS:</b><br>
+     MMRDLSD:RRDRDMSLS<br>
+     MMRDLSD:DMMRDRD     
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>122. HARK THE HERALD ANGEL</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      SDDTDMMR:SSSFMRM<br>
+      SDDTDMMR:SRRTTLS<br>
+      SSSDFMMR:SSSDFMMR<br> 
+      LLLSFMF:RMFSDDRM<br>
+      LLLSFMF:RMFSDDRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>123.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>124.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>125. JOY TO THE WORLD</b></span>
+     <h1 class="tonic-key">KEY C</h1>
+     <p>
+      DTLS:FMRD<br>
+      SLLTTD<br>
+      DDTLSSFM:DDTLSSFM<br> 
+      MMMMFS:FMRRRMF<br>
+      RDDLSFM:FMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>126.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>127.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>128.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>129.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>130.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>131.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>132. O COME ALL YE FAITHFUL</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+       DDSDRS:MRMFMR<br>
+       DTLTDR:MTLSS<br>
+       SFMFM:RMDRTLS<br>
+       DDTDRS:MMRMFMR<br>
+       MFMRDT:DFMRDD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>133.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>134.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+  <span><b>135. O LITTLE TOWN OF BETHLEHEM</b></span>
+  <h1 class="tonic-key">KEY F</h1>
+      <P>
+        SDDDRMRMRS:MFMDRRD<br>
+        SDDDRMRMRS:MFMDRRD<br>
+        DMSLSFMR:DRMFSSDRMDS<br>
+        SDDDRMRMFS:MFMDRD
+      </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>136.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>137.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+   <span><b>138.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>139.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>140.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>141.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>142.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>143.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>144.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>145.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>146.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>147.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+      <span><b>148.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>149. ONCE IN ROYAL DAVID CITY</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+       STDDDTDRRD:DMSMMRDTD<br>
+       STDDDTDRRD:DMSMMRDTD<br>
+       LSDFFM:LLSMMRDTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>150.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>151.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>152.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>153. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>154.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>155.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>156. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>157.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>158.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>159. THE OLD RUGGED CROSS</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <P>
+       MFSFLS:SSLSTL<br>
+       LTLS:FSFM<br>
+       MFSFLS:SSLSTL<br>
+       LTLS:FMRD<br>
+       <b>CHORUS:</b><br>
+       TDRRRRDTD:DTLLLDTLS<br>
+       SDMMMMFML:TFMRDSTRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>160. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>161.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>162.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>163. AT THE CROSS</b></span>
+     <h1 class="tonic-key">KEY Eb</h1>
+     <p>
+       DMRD:MSFM<br>
+       SLSFMR<br>
+       DMRD:MSLS<br>
+       DRFMRRD<br>
+       <b>CHORUS:</b><br>
+       DRMMMM:FMMRRDR<br>
+       RMFFF:SFM<br>
+       MMFFL:FFMMRD<br>
+       MRRDTFMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa" id="hymnoftheday">
+     <span><b>164. THERE IS A GREEN HILLS</b></span>
+     <h1 class="tonic-key">KEY D</h1>    
+     <P>
+      SSSMSLRF:RSFRMFM<br>
+      SSSMSLRF:RSFRMFM<br>
+      SF:MMMR<br>
+      SF:MSSRMFS<br>
+      SF:MSSRMFM
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>165.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>166.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>167.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>168.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>169.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>170.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>171.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>172.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>173.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>174.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>175.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>176.</b></span>
+    </div>
+    
+    
+    <div class="tonic-solfa">
+     <span><b>177.</b></span>
+    </div>
+   
+    <div class="tonic-solfa">
+     <span><b>178.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>179.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>180. O LISTEN TO OUR WONDEROUS STORY</b></span>
+     <h1 class="tonic-key">KEY C</h1>
+     <p>
+      DSLSDTLSM:MSLRDTD<br>
+      DSLSDTLSM:MSLRDTD<br>
+      SMSSLSFM:DMMFMRD<br>
+      DDTL fmr:RRDT<br>
+      MMRDRDTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>181. DOES JESUS CARE</b></span>
+     <h1 class="tonic-key">KEY C</h1>
+     <P>
+      SMRDLLS FM:MMRDRSFM<br>
+      MFSDD:MMRLL<br>
+      LLSMSFRD<br>
+      <b>CHORUS:</b><br>
+      DTFR:DMS<br>
+      MRTLMFS:TTDRDSMRLD<br>
+      TLS:DMRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>182.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>183.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>184. JESUS PAID IT ALL</b></span>
+     <h1 class="tonic-key">KEY D</h1>
+     <P>
+      DMSLSMD:DRRDRM<br>
+      DMSLSMD:DRMFMRD<br>
+      <b>CHORUS:</b><br>
+      FSFMS:FSFMR<br>
+      SLSMDTL:DMFMRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+     <div class="tonic-solfa">
+      <span><b>185.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>186.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>187.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>188.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>189. ALL THAT THRILL'S MY SOUL</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <p>
+      SSLSMSLD:TLSLTRD<br>
+      SSLSMSLD:TLSLTRD<br>
+      MMRRDDTL:RMRDTLS<br>
+      SSLSMSLD:TLSLTRD 
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>190. JESUS LOVE ME</b></span>
+     <h1 class="tonic-key">KEY C</h1>
+     <p>
+      SMMRMSS:LLDLLSS<br>
+      SMMRMSS:LLSDMRD<br>
+      <b>CHORUS:</b><br>
+      SMSLD:SMDMR
+      SMSLD:LSDMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>191.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>192.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>193.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>194.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>195. SHOWER'S OF BLESSING</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <p>
+      SSSSLTDS:TTTTDRD<br>
+      LLLDTLSD:DDDDTDR<br>
+      <b>CHORUS:</b><br>
+      MRMDS:MRMDTDR<br>
+      MFMRDLSD:TTTTDRD 
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>196.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>197.</b></span>
+    </div>
+     
+     
+    <div class="tonic-solfa">
+     <span><b>198.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>199.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>200. THE LORD IS COMING</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <P>
+      SDMSMFRR:MFFFRDTD<br>
+      SDMSMFRR:MFFFRDTD<br>
+      SSSSSLLL:LSFMDMMR<br>
+      SDDDMRRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    
+    <div class="tonic-solfa">
+     <span><b>201.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>202.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>203.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>204. COME THOU LONG</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      SSDDRRMD<br>
+      SSLFRSM<br>
+      MMRMDRDL<br>
+      DLSDDTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>205.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>206.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>207.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>208.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>209.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>210.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>211.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>212.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>213. JESUS IS COMING AGAIN</b></span>
+     <h1 class="tonic-key">KEY A</h1>
+     <p>
+     DDDDD:DRRRR<br>
+     DDDMRDR:DDDDD<br>
+     DRMMF:SMRDTTD<br>
+     <b>CHORUS:</b><br>
+     DTLS:MMMM<br>
+     MFMR:MFRDTTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>214. WE HAVE THIS HOPE THAT</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <p>
+      DTDLS:SDDRM<br>
+      DRMFMRDR<br>
+      DTDLS:SDDRM<br>
+      FMRDTLTD<br>
+      SSSSLLL:TTTTDDD<br>
+      RRMRDRM:FFMDSSS<br>
+      DTDLS:DDDRM<br>
+      FMRDTLTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>215.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>216. WHEN THE ROLL IS CALLED UP YONDER</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      DRMMMMRDDRDTLS<br>
+      DRMMMMMRDR<br>
+      DRMMMMRDDRDTLS<br>
+      DRMMMDRRDTD<br>
+      <b>CHORUS:</b><br>
+      MFS:FMFSSFM<br>
+      RMF:MRMFFMR<br>
+      MFS:MRDDF<br>
+      FFMMMDRRDTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>217.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>218. WHEN HE COMETH</b></span>
+     <h1 class="tonic-key">KEY D</h1>
+     <p>
+      DRMM:MFSS;LSDRDD<br>
+      DRMM:MFSS;LSDRD<br>
+      <b>CHORUS:</b><br>
+      DTLLDSS:LSDRMFS<br>
+      DTLLDSS:LSDRD<br>
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>219.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+  <span><b>220.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>221.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>222.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>223.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>224.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>225.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>226.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+  <span><b>227. JESUS SHALL REIGN</b></span>
+  <h1 class="tonic-key">KEY D</h1>
+     <p>
+      DMFSLTDTLS<br>
+      SSSLSFMR<br>
+      MMRD:MSDLSFMR<br>
+      SLTDFMRD  
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>228.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>229. ALL HAIL THE POWER</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      SDD:MMRDR<br>
+      MRD:MRD<br>
+      RMRDMSFMRM<br>
+      SSSLSFS;<br>
+      MSMDMRDRMR<br>
+      DSFMFRTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>230.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>231.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>232.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>233.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>234.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>235.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>236.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>237.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+   <span><b>238.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>239.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>240.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>241.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>242.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>243. KING OF GLORY</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      MSDRMFMR:MFRTD<br>
+      MSDRMFMR:TDLSL<br>
+      SDDDS:DRM:MSSFS<br>
+      MSDRMFMR:MFRTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>244.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>245. MORE ABOUT JESUS</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      SSSSLTDDD:RRRRMFMMM<br>
+      SSSSFMMM:RMFMRDTD<br>
+      <b>CHORUS:</b><br>
+      MSLTDDD:RRRRMFMFS<br>
+      SSSSFMMM:RMFMRDTD 
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>246. WORTHY IS THE LAMB</b></span>
+     <h1 class="tonic-key">KEY C</h1>
+     <p>
+      DDDDTLS:LLLLSFM<br>
+      DDDDTLS:LTD<br>
+      <b>CHORUS:</b><br>
+      SMLTLS<br>
+      FMRSMD<br>
+      SMDTLS<br>
+      LTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>247.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+      <span><b>248.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+         
+     <span><b>249. PRAISE HIM PRAISE HIM</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      MS:DM;RMRDTLSD<br>
+      MS:DM;MRDRMR<br> 
+      MS:DM;RMRDTLSD<br>
+      MS:FR;DTDMRD<br>
+      RMRTS:FMRMFMR<br>
+      MS:DM;MRDRMR<br>
+      <b>CHORUS:</b><br>
+      MS:DM;RMRDTLSD<br>
+      MS:FR;DTDMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>250. O FOR A THOUSAND TONGUE</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+     DRMSDRTD<br>
+     MRSFMR<br>
+     DRMFMRDT<br>
+     SLFMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>251.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>252.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>253. THERE'S NO OTHER NAME LIKE JESUS</b></span>
+     <h1 class="tonic-key">KEY F</h1>    
+     <p>
+      SDMRDRDS:TDRDRFM<br>
+      SDMRDRDS:TDRDMRD<br>
+      <b>CHORUS:</b><br>
+      SM;MD<br>
+      TDRDRLSM<br>
+      SM;MD<br>
+      TDRDRMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>254.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>255.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>256. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>257.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>258. BAPTIZE US ANEW</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      MRDDD:SLDDD<br>
+      LSDRMM:DRRMR<br>
+      MFFFLDR;MMMM<br>
+      MFSMDDL:FMDRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>259.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>260. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>261.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>262.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>263.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>264.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>265. BREATHE ON ME, BREATHE OF GOD</b></span>
+     <h1 class="tonic-key">KEY Db</h1>
+     <p>
+      MMFDMSFMR<br>
+      MRMFLSMMRF<br>
+      RDTDMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>266.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>267.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>268.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>269.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>270.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>271.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>272.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>273.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>274.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>275.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>276.</b></span>
+    </div>
+    
+    
+    <div class="tonic-solfa">
+     <span><b>277.</b></span>
+    </div>
+   
+    <div class="tonic-solfa">
+     <span><b>278.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>279.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>280.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>281.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>282.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>283.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>284. </b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+      <span><b>285.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>286. WONDERFUL WORD OF LIFE</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      MMMFMMRR:SRRMRD<br>
+      MMMFMMRR:SRRMRD<br>
+      MMMFSLS:MMMFSLS<br>
+      <b>CHORUS:</b><br>
+      SFMF:FMRM<br>
+      MRDRTD;MS:<br>
+      SFMF:FMRM<br>
+      MRDRTD 
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>287. SOFTLY AND TENDERLY</b></span>
+    <h1 class="tonic-key">KEY G</h1>
+    <p>
+     MRDDTDRDLLS:DDDMRDR<br>
+     MRDDTDRDLLS:DDFMDRD<br>
+     <b>CHORUS:</b><br>
+     SR:MD:RM<br>
+     RRRRMFS;F<br>
+     MRDDTDRDLLS<br>
+     DDFMDRD
+    </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>288.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>289.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>290. TURN YOUR EYES UPON JESUS</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      MMRMLSMMR:SDDDMRDM<br>
+      MMRMLSMMR:RMFSTDLSF<br>
+      MMSMRDDD:DFFFLSMR<br>
+      MFSSSMRDDD:DRMRMFMRD
+     </p>                  
+     <button onclick="togglePlay(this)">▶ Play</button>    
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>        
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>291.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>292. JESUS I COME</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      SDDM:RDTLS<br>
+      DTDR:RDRM<br>
+      SDDM:RDTLS<br>
+      DTDMRD<br>
+      <b>CHORUS:</b><br>
+      DTDFL:SFSM<br>
+      RDRS:TTRDLSF<br>
+      SFSM:RDTLS<br>
+      DTDMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>293.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>294.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>295. CHIEF OF SINNERS</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <p>
+      DDTDLDS:MDFRDTD<br>
+      MMRMFMR:MMRMFMR<br>
+      DDTDLDS:MDFRDTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>296.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>297.</b></span>
+    </div>
+     
+     
+    <div class="tonic-solfa">
+     <span><b>298.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>299.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>300. ROCK OF AGES</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <P>
+      SLSMDLS:DRMRDTD<br>
+      TDRRTSD:TDRRTSD<br>
+      SLSMDLS:DRMRDTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>301.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>302.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>303.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>304. FAITH OF OUR FATHER'S</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      MRDDTDRLTD<br>
+      DTLS:DDTDR<br>
+      MRDDTDRLTD<br>
+      DTLS:MRMRD;RM<br>
+      FFFM:MRRM<br>
+      MRDLDRRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>305.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>306. DRAW ME NEARER</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      MFMRR:RMRDTD<br>
+      DTLLDLS<br>
+      MFMRR:RMRDTD<br>
+      RMFFLTD<br>
+      <b>CHORUS:</b><br>
+      MFSS:MMRDTLS<br>
+      DTLLDLS<br>
+      MFSS:MMRDTLF<br>
+      MRDDRMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>307.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>308. WHOLLY THINE</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      DRMDS:DRMRD<br>
+      TDR:DRM<br>
+      DRMDS:DMRD<br>
+      RDMRD<br>
+      <b>CHORUS:</b><br>
+      SMS:MDM<br>
+      FMRRDRM<br>
+      SMS:MDM<br>
+      FMRDMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>309. I SURRENDER ALL</b></span>
+    <h1 class="tonic-key">KEY D</h1>
+    <p>
+     MMFM:RRMR<br>
+     DDFMRMD<br>
+     MMFM:RRMR<br>
+     DDFMRMD<br>
+     <b>CHORUS:</b><br>
+     DTLS:FFFFF<br>
+     TLSF:MMMMM<br>
+     SSLSDTLL:SFMRD
+    </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>310.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>311.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>312. NEAR THE CROSS</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      MFMRDLL:SDDFMR<br>
+      MFMRDLL:SDDTRD<br>
+      <b>CHORUS:</b><br>
+      MSS:FLL<br>
+      SLSFMR<br>
+      MFMRDLL:SDDTRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>313.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>314.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>315.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>316.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>317. LEAD TO CALVARY</b></span>
+     <h1 class="tonic-key">KEY Db</h1>
+     <p>
+      MMRDDFFM:MRDSMR<br>
+      MMRDDFFM:DDRMRD<br>
+      <b>CHORUS:</b><br>
+      DRM;RRMFLSFM:RRMFLSFM<br>
+      DDDTTLLS:DDRMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>318.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>319. LORD I WANT TO BE A CHRISTIAN</b></span>
+     <h1 class="tonic-key">KEY Eb</h1>
+     <P>
+      DDMMSMRDDMM;SLSM<br>
+      DDMMSMRDLDD<br>
+      DDL:LLL<br>
+      DLS:SLSM<br>
+      DDMMSMRDLDD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+  <span><b>320.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>321.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>322. NOTHING BETWEEN</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      MMMMDDRDLLS:DDDDMMRDR<br>
+      MMMMDDRDLLS:DDLS;MRDRD<br>
+      <b>CHORUS:</b><br>
+      DDLS:MRDRMD<br>
+      DDLS:MMRDR<br>
+      MMMMDDRDLLS<br>
+      DDLS:MRDRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>323.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>324.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>325.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>326.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+  <span><b>327. I RATHER HAVE JESUS</b></span>
+  <h1 class="tonic-key">KEY C</h1>
+     <p>
+      DMMRDMS:SSDLS<br>
+      DMMFS:SSFMR<br>
+      DMMRDMS:SSDLS<br>
+      LLS:MRTD<br>
+      <b>CHORUS:</b><br>
+      DDTDR:TTDLS<br>
+      DDTDR:TTD<br>
+      DMMRDMS:SSDLS<br>
+      LLS:MRTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>328.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>329.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>330. TAKE MY LIFE AND LET IT BE</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      DDDSDMSFM:MMMRFRDTD<br>
+      MMRMFSFM:SSS;SSFMR<br>
+      DRMFRDTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>331.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>332.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>333.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>334.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>335.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>336.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>337. REDEEMED!</b></span>
+    <h1 class="tonic-key">KEY A</h1>
+    <p>
+      SSSSSLTDS:DRRRRDRM<br>
+      SSSSSLTDS:DRRRRMRD<br>
+      <b>CHORUS:</b><br>
+      DF:FM<br>
+      DRRRRDRM<br> 
+      SLLDTLFL:DRRRRMRD<br>
+    </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+   <span><b>338.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>339.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>340. JESUS SAVES</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      SSDSDRM:SLSMDR<br>
+      SSDSDRM:SLSRMD<br>
+      DDFFFFM:DRMMSMR<br>
+      SSSMFSL:SLSRMD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>341. TO GOD BE THE GLORY</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      SSLTDS:DRSRM<br>
+      MFLFMD:MMRLR<br>
+      SSLTDS:DRSRM<br>
+      MSFRDT:DRMMRD<br>
+      <b>CHORUS:</b><br>
+      MFS:MFS<br>
+      SMSDRMR<br>
+      RMF:RMF<br>
+      FRSSFM<br>
+      SSLTDS:DRSRM<br>
+      MSFRDT:DMMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>342.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>343.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>344.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>345.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>346.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>347.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+      <span><b>348.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>349.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>350.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>351.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>352.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>353.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>354.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>355.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>356. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>357.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>358.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>359.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>360. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>361.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>362.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>363.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>364.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>365.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>366.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>367. RESCUE THE PERISHING</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <p>
+      SMFSSS:DTLLS<br>
+      SLTDRMRDLS<br>
+      SMFSSS:DTLLS<br>
+      SLTDRMRDTD<br>
+      <b>CHORUS:</b><br>
+      RDRMRD:RDRMD<br>
+      DTLSDM:RDTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>368.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>369. BRINGING IN THE SHEAVES</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <p>
+      SSSLSM:DDDRDL<br>
+      SSSLSMFMRDR<br>
+      MSSLSM:DDDRDL<br>
+      SSDRMD:RDMRD<br>
+      <b>CHORUS:</b><br>
+      MSSLS:LDDLS<br>
+      SDDRMD:MMRDR<br>
+      MSSLS:LDDLS<br>
+      SSDRMD:RDMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>370.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>371.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>372.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>373. SEEKING THE LOST</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <p>
+      SFSDD:MRDLL<br>
+      DTLSS:DRMRR<br>
+      RDMF:MRMSM<br>
+      DTLSM:MRDRD<br>
+      <b>CHORUS:</b><br>
+      DRMF:FFFF<br>
+      SSLTD:DDDD<br>
+      MRDS:SSSS<br>
+      SFMRD:MFFM<br>
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>374.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>375.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>376.</b></span>
+    </div>
+    
+    
+    <div class="tonic-solfa">
+     <span><b>377.</b></span>
+    </div>
+   
+    <div class="tonic-solfa">
+     <span><b>378.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>379.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>380.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>381.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>382.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>383.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>384. </b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+      <span><b>385.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>386.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>387.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>388.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>389.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>390.</b></span>                         
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>391.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>392.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>393.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>394.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>395.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>396.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>397.</b></span>
+    </div>
+     
+     
+    <div class="tonic-solfa">
+     <span><b>398.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>399.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b></b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>401.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>402.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>403.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>404.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>405.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>406.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>407.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>408.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>409.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>410.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>411.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>412. COVER WITH HIS LIFE</b></span>
+     <h1 class="tonic-key">KEY G
+     Db</h1>
+     <P>
+      MMRMD:SSLSM<br>
+      MMRMD:RRMR<br>
+      MMRMD:SSSLD<br>
+      RDLSM:FMRD<br>
+      <b>CHORUS:</b><br>
+      SMRSR:FFFFR<br>
+      MRDSR:SSLSF<br>
+      MMRMD:SSSLD<br>
+      RDLSM:FMRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>413.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>414.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>415.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>416.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>417.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>418.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>419.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+  <span><b>420.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>421.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>422. MARCHING TO ZION</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      MD;STLD<br>
+      RMRDSFMR:RMMFMRRDL<br>
+      DRRMRDTLS<br>
+      SDR<br>
+      MFS:FMRDDRDTD<br>
+      <b>CHORUS:</b><br>
+      MSM:FMD<br>
+      MRDSFMRS:FMMMFSLL<br>
+      SFMMDRRTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>423. GLORIOUS THING OF THEE</b></span>
+     <h1 class="tonic-key">KEY Eb</h1>
+     <P>
+      DRMRFMRTD:LSFMRMDS<br>
+      DRMRFMRTD:LSFMRMDS<br>
+      RMRTSFMRTS:SFMMFS<br>
+      DTLSLSSFM:RMFSLFRDMRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>424.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>425.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>426.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+  <span><b>427.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>428.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>429.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>430.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>431.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>432.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>433.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>434.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>435.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>436.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>437.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+   <span><b>438.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>439.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>440.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>441.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>442.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>443.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>444.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>445.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>446.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>447.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+      <span><b>448.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>449.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>450.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>451.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>452.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>453.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>454.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>455.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>456. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>457.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>458.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>459.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>460. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>461.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>462. BLESSED ASSURANCE</b></span>
+     <h1 class="tonic-key">KEY Db</h1>
+     <P>
+      MRDSSFSLS:SMSDTTLSFS<br>
+      MRDSSFSLS:DRMFRDTD<br>
+      <b>CHORUS:</b><br>
+      SSSDS:LLLS<br>
+      SSSLD:TTLT<br>
+      TDRDS:LLLS<br>
+      DRMFRDRTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>463.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>464.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>465.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>466.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>467.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>468.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>469. LEANING ON THE EVERLASTING ARMS</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <p>
+     MMMRD:RRRDL<br>
+     SDTDRMMR<br>
+     MMMRD:RRRDL<br>
+     SSDTDRMRD<br>
+     <b>CHORUS:</b>
+     MD:DL<br>
+     SDTDRMMR<br>
+     MD:DL<br>
+     SDTDRMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>470.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>471.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>472.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>473. NEARER GOD TO THEE</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      MRDDLL:SDMR<br>
+      MRDDLL:SDTRD<br>
+      SLSSMS:SLSSMR<br>
+      MRDDLL:SDTRD<br>
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>474. TAKE TAKE THE NAME OF JESUS WITH YOU</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <p>
+      SDMRDRDS:LDDTDLS<br>
+      SRRDDRMD:RSMRDTD<br>
+      <b>CHORUS:</b><br>
+      DTL:DLS<br>
+      DRMSDMRR<br>
+      MRD:DTL<br>
+      DRMDMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>475.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>476. BURDENS ARE LIFTED AT CALVARY</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      MDS:MMFMR:RSRMRD<br>
+      FFFLSFMDS:RMFMRD<br>
+      <b>CHORUS:</b><br>
+      FFFLSFMDS<br>
+      RRS;MSS<br>
+      FFFLSFMDS:RMFMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>477.</b></span>
+    </div>
+   
+    <div class="tonic-solfa">
+     <span><b>478.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>479. TREAD SOFTLY</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <p>
+      SSMDDSMSMSSS<br>
+      SLDDDSSTDLS<br>
+      MSSMSLLLSMSSS<br>
+      SLDDDSMSSSD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>480.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>481.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>482.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>483. I NEED THEE EVERY HOUR</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <p>
+      DMRDTD:DRDLS<br>
+      SRMRSM:TDTLS<br>
+      <b>CHORUS:</b><br>
+      MMD:FMMR<br>
+      RRDMRRD<br>
+      DDRDLSD:RMDRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>484. </b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+      <span><b>485. I MUST TELL JESUS</b></span>
+      <h1 class="tonic-key">KEY D</h1>
+      <p>
+       DRMSS:DRMRD<br>
+       DRMSS:DRMRR<br>
+       DRMSS:DRMRD<br>
+       DDDS:MDMRD<br>
+       <b>CHORUS:</b><br>
+       DDDDS:DDDDL<br>
+       FSLSM:SFMR<br>
+       DRMSS:DRMRD<br>
+       DDDDS:MDMRD
+      </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>486. I DO BELIEVE</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+     DTRR:RDMM<br>
+     MRMFLS:MSSFF<br>
+     RFFMM<br>
+     DMMRF:TRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>487.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>488.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>489.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>490.</b></span>                         
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>491.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>492.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>493.FILL MY CUP LORD</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <p>
+      SLSMMMM:SLSR<br>
+      STLSLSFM<br>
+      SDDDD:RMRD<br>
+      DDLT:STTDRD<br>
+      <b>CHORUS:</b><br>
+      SLLS:SSDDT<br>
+      TDR:RMRDRM<br>
+      DRMM:MMRDRDL<br>
+      LDT:LSTTDRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>494.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>495. NEAR TO THE HEART OF GOD</b></span>
+     <h1 class="tonic-key">KEY Db</h1>
+     <p>
+      MMRMMFMF:RRRRSFM<br>
+      MMRMMFMF:RSFMRD<br>
+      <b>CHORUS:</b><br>
+      DLL:FLLS<br>
+      SFMF:SMFS<br>
+      DLLDLSFM:RSFMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>496.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>497.</b></span>
+    </div>
+     
+     
+    <div class="tonic-solfa">
+     <span><b>498.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>499. WHAT A FRIEND IN JESUS</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+     SSLSMDDL:SDMDSMR<br>
+     SSLSMDDL:SDMRDTD<br>
+     RRRMFRMFS:LLSMFMR<br>
+     SSLSMDDL:SDMRDTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>500. TAKE TIME TO BE HOLY</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <P>
+      MMRMFM:MDRDTD<br>
+      MMRMFM:RRRRRR<br>
+      FFMRMFS:FFMRM<br>
+      SSFMLF:MRDTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>501. TIS BLESSED HOUR OF PRAYER</b></span>
+     <h1 class="tonic-key">KEY Db</h1>
+     <p>
+      DRMRMFS:SSDTLS<br>
+      SSSMSLS:MMRDR<br>
+      DRMRMFS:SSDTLS<br>
+      SSLDLSM:DRMFMRD<br>
+      MSS:FS:MSDTLS<br>
+      SSLDLSM:DRMMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>502.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>503.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>504.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>505.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>506.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>507.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>508. ANYWHERE WITH JESUS</b></span>
+     <h1 class="tonic-key">KEY D</h1>
+     <P>
+       SSLLSMDRMFS:FMRSTLSFM<br>
+       SSLLSMDRMFS:DDDSTLSFMRD<br>
+       <b>CHORUS:</b><br>
+       RMF:MFS<br>
+       LLSFS:DDDSTLSFMRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>509.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>510.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>511. I KNOW WHOM I HAVE BELIEVED</b></span>
+     <h1 class="tonic-key">KEY D</h1>
+     <P>
+       DMMFMRD:LSS<br>
+       MSSLSFMR<br>
+       FMMFMRD:LSS<br>
+       MSSLSFRD<br>
+       DDD:DTLLS<br>
+       SLSSF:FSFFM<br>
+       DDD:DTLLS<br>
+       SSTLTSD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>512.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>513.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>514.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>515.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>516. ALL THE WAY</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <P>
+      MMM:MRDSD<br>
+      DMRRDRM<br>
+      MMFM:RDMRD<br>
+      RRRLTDT:LSDRDLSD<br>
+      DRMDFMR:MFSMRDRD<br>
+      TLSDMRM:MFSMRDRD<br>
+      TLSDMRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>517. MY FAITH LOOK UP TO THEE</b></span>
+     <h1 class="tonic-key">KEY D</h1>
+     <P>
+      DMSSFM:RRMFMR<br>
+      MRLS:SMFSLS<br>
+      SMFSLS:DTLSFM<br>
+      DRSD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>518. STANDING ON THE PROMISE</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <P>
+      SSSLSFMFSDD<br>
+      LLLTDTDLLSS<br>
+      SSSLSFMFSDD<br>
+      MMDDRRTTD<br>
+      <b>CHORUS:</b><br>
+      MD:LD<br>
+      RRRRRRDRMDLS<br>
+      MDLF<br>
+      RDDDRMMRRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>519.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+  <span><b>520. HE HIDETH MY SOUL</b></span>
+  <h1 class="tonic-key">KEY C</h1>
+     <p>
+     SSFMMRDLLLS:SSFMMFMR<br>
+     SSFMMRDLLLD:LSSMFMRD<br>
+     STTTTLTDTLS:SFMLFLSM;FS<br>
+     SDDDDTDRDDL:LSSSSSLSF<br>
+     LSMDFMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>521.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>522. MY HOPE IS BUILT</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      SDMSMFRR:MFFFRDTD<br>
+      SDMSMFRR:MFFFRDTD<br>
+      <b>CHORUS:</b><br>
+      SSSSSLLL<br> 
+      LSMMDMMR:SDDDMRRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>523. MY FAITH HAS FOUND</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <P>
+      SSLSDTLL:LFRDTD<br>
+      SSLSDTLL:LFRDTD<br>
+      <b>CHORUS:</b><br>
+      SDMSMFRR:SMDLRDT<br>
+      SSLSDTLL:LFRDTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>524. TIS SO SWEET TO TRUST IN JESUS</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      MRDTLDLS:DMSMRDR<br>
+      MRDTLDLS:DMLRDTD<br>
+      <b>CHORUS:</b><br>
+      MSSM;RDMR:MSSMRDR<br>
+      MRDS;FLLS:DMLRDTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>525.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>526. BECAUSE HE LIVES</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <p>
+     SMFS:DMRDL<br>
+     RDLS:SDMR<br>
+     SMFS:DRMFL<br>
+     DDRMMFMR:STRD<br>
+     <b>CHORUS:</b><br>
+     SDRM:MMMRDL<br>
+     RDLS:SDMR<br>
+     SDRM;FS:MRMFL<br>
+     DDRM:MFFMRRMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+  <span><b>527.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>528. A SHELTER IN THE TIME OF STORM</b></span>
+    <h1 class="tonic-key">KEY F</h1>
+    <p>
+     SMRFMRLR:DTTTDRSM<br>
+     SMRFMRLR:DTTTDMRD<br>
+     <b>CHORUS:</b><br>
+     SSLF:LLSSFM<br>
+     DDM:DDRRM<br>
+     SSLF:LLSSFM<br>
+     MSDFMRRD
+    </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>529. UNDER HIS WINGS</b></span>
+     <h1 class="tonic-key">KEY C</h1>
+     <p>
+      SSSS:SSLMSF:RMFSSRRM<br>
+      MFSDDDRDLLS:LTDDSMSFRD<br>
+      <b>CHORUS:</b><br>
+      SMFS:TLTD<br>
+      DSMLS:MMR<br>
+      SDDDD:DRDLLS<br>
+      LTDSS:MSFRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>530. IT IS WELL WITH MY SOUL</b></span>
+     <h1 class="tonic-key">KEY C</h1>
+     <p>
+      SSFMM:RMFLSFM<br>
+      SDDTLSFS<br>
+      SDDTL:LLRRDT<br>
+      LSDDDDTTD<br>
+      <b>CHORUS:</b><br>
+      SSS:RFM<br>
+      SSS:RFM<br>
+      SSL:LDDTTD<br>
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>531. WE BUILD ON THE ROCK</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      SDDRMDRDLS:SDDRMDMR<br>
+      SDDRMDRDLS:SLRDTRD<br>
+      <b>CHORUS:</b><br>
+      MFS:DRM<br>
+      FMR:DRM<br>
+      MMFFF:RMFFL<br>
+      RDDMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>532. DAY BY DAY</b></span>
+     <h1 class="tonic-key">KEY D</h1>
+     <p>
+     MRDDDRMMR:RDTTTDRTD<br>
+     MRDDDRMMR:RDTTTDRTD<br>
+     MFS:SSSDTTL<br>
+     RMF:FFLSFM<br>
+     MRDDDRMMR:RDTTTDRTD 
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>533.</b></span>
+    </div>
+     <!-- START HERE -->
+     <div class="tonic-solfa">
+     <span><b>534. WILL YOUR ANCHOR HOLD</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <p>
+      DRMDL:RRDTD<br>
+      MMRRS:TDTLS<br>
+      SSDMR:SSRFM<br>
+      DMSSS:FDRMRD<br>
+      <b>CHORUS:</b><br>
+      SSSSSSLS:MMFSSMDMR<br>
+      SSSSSMFSL:SSMDL<br>
+      FFMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>535.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>536.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>537. HE LEADETH ME</b></span>
+    <h1 class="tonic-key">KEY C</h1>
+    <P>
+     SMRDSLFF:LSMMRDMMR<br>
+     SMRDSLST:TLSMMRDRMRD<br>
+     <b>CHORUS:</b><br>
+     SSDT:RDTLS<br>
+     LSFMRDRMMR<br>
+     SSDTRDTLS<br>
+     LSMMRDRMRD
+    </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+   <span><b>538. GUIDE ME, O THOU GREAT JEHOVAH</b></span>
+   <h1 class="tonic-key">KEY G</h1>
+   <P>
+    SLSDDTDRMR:MDLFMRD<br>
+    SLSDDTDRMR:MDLFMRD <br>
+    RMFR:MFSM<br>
+    SSSSSSSF:SFMSFRDTD
+   </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>539.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>540.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>541.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>542.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>543.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>544.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>545.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>546.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>547.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+      <span><b>548.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>549.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>550.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>551.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>552.</b></span>
+     <P>
+     </P>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>553.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>554.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>555.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>556. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>557.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>558.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>559.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>560. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>561.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>562.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>563.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>564.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>565.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>566.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>567. HAVE THINE OWN WAY LORD</b></span>
+     <h1 class="tonic-key">KEY Eb</h1>
+     <P>
+      MMRMFMDTDR:RRDRMR<br>
+      RDTD:MMRMFM:SFSL<br>
+      LTLSM:MRDRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>568.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>569. PASS ME NOT O GENTLE SAVIOR</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <p>
+      MRDTDLSD:RRDRMR<br>
+      MRDTDLSD:RDMRD<br>
+      <b>CHORUS:</b><br>
+      SFM:RDL<br>
+      SDMDR<br>
+      MRDTDLSD:RDMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>570.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>571.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>572.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>573.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>574.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>575.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>576.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>577.</b></span>
+    </div>
+   
+    <div class="tonic-solfa">
+     <span><b>578.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>579. TIS LOVE THAT MAKES US HAPPY</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <p>
+      SDSSMRD:TLLDLS<br>
+      SDSSMRLL:FMDRTD<br>
+      <b>CHORUS:</b><br>
+      MMD:DDTLLS<br>
+      MMD:DDTDR<br>
+      SDSSMRD:TLLDLS<br>
+      SDSSMRLL:FMDRTD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>580.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>581.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>582.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>583.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>584.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+      <span><b>585.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>586.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>587.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>588.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>589.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>590. TRUST AND OBEY</b></span>
+      <h1 class="tonic-key">KEY F</h1>
+     <p>
+     DRMMRD:DMSSFM<br>
+     MMFLSMSMR<br>
+     DRMMRD:DMSSFM<br>
+     MMFLFMDRD<br>
+     <b>CHORUS:</b><br>
+     SRSM:MMLMSF<br>
+     FFFMRMFS:DRMDRD
+     </p>            
+     <button onclick="togglePlay(this)">▶ Play</button>       
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>     
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>591.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>592.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>593.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>594. HEIR OF THE KINGDOM</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <P>
+      DTLS:LDDTLDDT<br>
+      DTLS:LDDRTD<br>
+      RRRMD:SLDLLS<br>
+      DDRM:LFMRDTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>595. LET EVERY LAMB BE BURNING</b></span>
+     <h1 class="tonic-key">KEY Eb</h1>
+     <p>
+      SDDD:MSMS<br>
+      LSMDTDMR<br>
+      SDDD:MSMS<br>
+      LSMDRMRD<br>
+      SDDD:SLLS<br>
+      SDDD:SMDR<br>
+      MRDDD:MSMS<br>
+      LSMDRMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>596.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>597.</b></span>
+    </div>
+     
+     
+    <div class="tonic-solfa">
+     <span><b>598.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>599.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>600.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>601.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>602.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>603.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>604.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>605.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>606.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>607.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>608.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>609.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>610.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>611. AWAKE MY SOUL</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <P>
+       MMMMSFM<br>
+       DDTDMRDR<br>
+       MMMMMLSF<br>
+       RSFMDDTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>612. CHRISTIAN SOLDIER</b></span>
+     <h1 class="tonic-key">KEY D</h1>
+     <P>
+      SSSSSLS:RRDRM<br>
+      DMSDDT:LLMFS<br>
+      RRSRMFM:SSDSL<br>
+      LSFS;LSFS:LSFMR<br>
+      <b>CHORUS:</b><br>
+      DDDDDRD:RRDRM<br>
+      SDDTDS:FMRDD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>613.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>614.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>615.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>616.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>617.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>618. STAND UP FOR JESUS</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <P>
+      SDD;MDDL:DSDRMR<br>
+      SDD;MDDL:DSDMRD<br>
+      DRRDRMM:MFMLRDT<br>
+      SDDMDDL:DSDMRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>619.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+  <span><b>620.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>621.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>622.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>623. I WILL FOLLOW THEE</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <P>
+      SSMMRRDD:LLDLLS<br>
+      SSMMRRLL:DLSDTRD<br>
+      <b>CHORUS:</b><br>
+      TDRR:DRMM<br>
+      RMFMMDR<br>
+      SSMMRRLL:DLSDTRD 
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>624.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>625. HIGHER GROUND</b></span>
+     <h1 class="tonic-key">KEY Ab</h1>
+     <P>
+      SSDM:MRDL<br>
+      RDLS:DMDR<br>
+      SSDM:MRDL<br>
+      RDLS:DMRD<br>
+      <b>CHORUS:</b><br>
+      DDMS:SFMF<br>
+      STRF:FMRM<br>
+      SSMD:MRDL<br>
+      RDLS:DMRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>626.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+  <span><b>627.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>628.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>629.</b></span>
+     <P>
+      
+     </P>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>630.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>631.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>632. UNTIL THEN</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <p>
+      SLSM:SSSLSSF<br>
+      FFMR:TTLSFM<br>
+      SLSM:SDMRDLD<br>
+      DTLS:MSSFRD<br>
+      <b>CHORUS:</b><br>
+      STDR:RRRMRDS<br>
+      TDR:RRRMRD<br>
+      MMRD:MMMFMRL<br>
+      DTLS:DMRD
+     </p>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>633. WHEN WE ALL GET TO HEAVEN</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <P>
+      SSSDMFSLSM:FFFMRFSM<br>
+      SDDSLDDT:SDDTLTD<br>
+      <b>CHORUS:</b><br>
+      MSD:TLSM<br>
+      SSDDDDDTDR<br>
+      SDMRDLD:LSDDTLTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+     </div>
+     
+     <div class="tonic-solfa">
+     <span><b>634.</b></span>
+    </div>
+     
+     <div class="tonic-solfa">
+     <span><b>635.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>636.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+    <span><b>637.</b></span>
+    
+    </div>
+    
+    <div class="tonic-solfa">
+   <span><b>638.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>639.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>640.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>641.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>642.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>643.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>644.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>645.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>646.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>647. MINE EYES HAVE SEEN THE GLORY</b></span>
+     <h1 class="tonic-key">KEY Bb</h1>
+     <P>
+      SSSSSFMS:DRMMMRD<br>
+      DTLLTTDTDLSLSMS<br>
+      SSSSSFMS:DRMMMRD<br>
+      DRRDTD<br>
+      <b>CHORUS:</b><br>
+      SFMSDRMD:LTDTDLSM<br>
+      SFMSDRMD:DRRDTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+     <div class="tonic-solfa">
+      <span><b>648.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>649.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>650.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>651.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>652. LOVE AT HOME</b></span>
+     <h1 class="tonic-key">KEY F</h1>
+     <P>
+      SMSMDLD:SLSMR<br>
+      MFSMDLD:SMRMD<br>
+      TRRRDRM:LDDDTDR<br>
+      MFSMDLD:SMRMD<br>
+      <b>CHORUS:</b><br>
+      LFM:MDSF<br>
+      MFSMDLD:SMRTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>653.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>654.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>655.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>656. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>657.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>658.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>659.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>660. </b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>661.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>662.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>663.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>664.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>665.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>666.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>667.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>668.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>669.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>670. WE GIVE THEE BUT THINE OWN</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <P>
+      SDSLTD:DFMRDDT<br>
+      TDSLTDRM:SFRDTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>671. DEAR LORD AS WE PRAY</b></span>
+     <h1 class="tonic-key">KEY Db</h1>
+     <P>
+      MMFSF:FMRRRMFM<br>
+      MRDDDDRMR:RDTTTDRTD<br>
+      MSLLLLLSFS:LTDDDDLTF<br>
+      SFMMMMFSF:FMRRRRRDTD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>672.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>673.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>674.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>675.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>676.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>677.</b></span>
+    </div>
+   
+    <div class="tonic-solfa">
+     <span><b>678.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>679.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>680.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>681.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>682.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>683.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>684.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>685.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>686.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>687.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>688.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>689.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>690.</b></span>                     
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>691.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>692.</b></span>
+    </div>
+     
+    <div class="tonic-solfa">
+     <span><b>693.</b></span>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>694. PRAISE GOD FROM WHOM</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <P>
+      DDTLSDRM:MFMRDFMR<br>
+      DRMRDTLLTD:SMDRFMRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+    
+    <div class="tonic-solfa">
+     <span><b>695. PRAISE GOD FROM WHOM</b></span>
+     <h1 class="tonic-key">KEY G</h1>
+     <P>
+      DDTLSDRM:MFMRDFMR<br>
+      DRMRDTLLTD:SMDRFMRD
+     </P>
+     <button onclick="togglePlay(this)">▶ Play</button>
+     <i class="bx bx-heart favorite-btn" onclick="toggleFavorite(this)"></i>
+    </div>
+   
+   
+<script src="script.js"></script>
+</body>
+</html>
