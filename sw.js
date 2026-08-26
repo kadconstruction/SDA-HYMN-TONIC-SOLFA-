@@ -9,7 +9,8 @@ const APP_FILES = [
     "manifest.json",
     "sdalogo.png",
     "sdalogo.jpg",
-    "bg-image-1.png"
+    "1.mp3"
+    
 ];
 
 
