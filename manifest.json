@@ -1,0 +1,25 @@
+{
+  "name": "SDA Hymn Tonic Solfa",
+  "short_name": "SDA Solfa",
+  "description": "Seventh-day Adventist Hymn Tonic Solfa Player",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0a0a0a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "sdalogo-ii.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "sdalogo-ii.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

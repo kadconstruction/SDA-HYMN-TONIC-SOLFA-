@@ -1,0 +1,332 @@
+body {
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("bg-image-1.png");
+  background-position: center;  
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  bbackface-visibility: 100;
+  min-height: 100vh;  
+  margin: 10% auto;
+  box-sizing:border-box;
+  padding:0 20px;
+  font-family: "Poppins", Arial, sans-serif;
+  }
+/* HEADER SECTION */
+header{
+  height: 80px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000000;
+  padding: 2% 6%;
+  transition: all .45s ease; 
+}
+header h1{
+  font-family: 'Playfair Display', serif;
+  color: #ffffff;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  margin-right: 10px;
+}
+img{
+  width: 60px;
+  margin-left: 40px;
+  border-radius: 25px;
+}
+/***** SEARCH BOX SECTION *****/
+.searchBox{
+  transform:none;
+  width:100%;
+  padding:8px;
+  border-radius:5px;
+  border:solid;
+  background:#fff;
+  text-align:center;
+  font-size:16px;
+}
+#searchBox::placeholder{
+  color: #000000;
+}
+#searchBox{
+  outline: none;
+  transition: 0.5s;
+}
+#searchBox:focus{
+  box-shadow: 0 0 10px #ffffff;
+  background: #ffffff;
+}
+.search-area{
+  position: fixed;
+  top: 98px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75%;
+  max-width: 400px;
+  display: flex;
+  gap: 8px;
+  z-index: 2001;
+}
+#searchIcon{
+  background:#ffffff;
+  color:#000;
+  font-size:30px;
+  width:45px;
+  height:37px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:5px;
+  cursor:pointer;
+  margin-top: 2px;
+}
+/***** KEY-PAD SECTION *****/
+.keypad{
+    display:none;
+    position:fixed;
+    top:60%;
+    left:50%;
+    transform:translateX(-50%);
+    width:75%;
+    background:#000;
+    padding:15px;
+    border-radius:10px;
+    z-index:2000;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+.keypad button{
+    height:45px;
+    font-size:18px;
+    border:none;
+    border-radius:5px;
+    background:#fff;
+    color:#000;
+    cursor:pointer;
+    font-weight:bold;
+}
+.keypad button:hover{
+    background:#ffd700;
+}
+/***** TEXT KEYPAD SECTION *****/
+.textpad{
+    display:none;
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    background:#000;
+    padding:15px;
+    box-sizing:border-box;
+    border-top:2px solid #444;
+    z-index:3000;
+}
+.textpad .row{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-bottom:8px;
+}
+.textpad button{
+    flex:1;
+    max-width:42px;
+    height:45px;
+    border:none;
+    border-radius:5px;
+    background:#fff;
+    color:#000;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
+}
+.textpad button:hover,
+.textpad button:active{
+    background:#ffd700;
+}    
+.textpad .space{
+    flex:5;
+    max-width:none;
+}
+.textpad .back,
+.textpad .clear,
+.textpad .search{
+    flex:2;
+    max-width:none;
+    background:#fff;
+    color:#000;
+}
+.textpad .back:hover,
+.textpad .clear:hover,
+.textpad .search:hover,
+.textpad .back:active,
+.textpad .clear:active,
+.textpad .search:active{
+    background:#ffd700;
+}
+/***** NAVMENU SECTION *****/
+.navMenu{
+    flex: 1;
+    position: fixed;
+    right: -250px;
+    width: 210px;
+    height: 100vh;
+    background: #060606;
+    padding-top: 14vh;
+    transition: .5s; 
+    top:80px;
+    height:calc(100vh - 80px);
+}
+#menuIcon{
+    color: #000000;
+    background-color: #ffffff;
+    border-radius: 3px;
+    font-size: 28px;
+    cursor: pointer;
+    display: block;
+    box-shadow: 0 0 3px #ffffff;
+}
+.navMenu ul li{
+    display: block;
+    position: relative;
+}
+.navMenu i{
+    color: white;
+    font-size: 20px;
+    transition: all .45s ease;
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    letter-spacing:0.5px;
+    line-height: 60px;
+} 
+ul li a:hover{
+    color:#ffd700;
+}    
+footer{
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 500;
+    text-align: center;
+    padding: 0.3125rem;
+    color: white;
+    margin-top: 38vh;
+}
+footer a{
+    color: white;
+}
+/***** INTERFACE DIV SECTION *****/
+.interface-flex{
+    display:flex;
+    gap:15px;
+    overflow-x:auto;
+    scroll-behavior:smooth;
+    margin-top: 70%;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding:10px;
+    scrollbar-width:none;
+    position: fixed;
+    left:0;
+    right:0;
+}
+.interface-flex::-webkit-scrollbar{
+    display:none;
+}
+.interface{
+    flex:0 0 90%;
+    min-height:180px;
+    background: #070707a9;
+    color: #ffffff;
+    border-radius:10px;
+    padding:30px;
+    box-sizing: border-box;
+    text-align: center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.4);
+    animation: bounce 1.2s 2 ease-in-out;    
+}
+@keyframes bounce{
+    0%,80%,100%{
+        transform:translateY(0);
+    }
+    40%{
+        transform:translateY(-10px);
+    }
+}
+.interface h3{
+    margin-bottom:15px;
+    color:#ffff;
+    font-size:20px;
+}
+.interface ul{
+    padding:0;
+    margin:0;
+    list-style:none;
+}            
+.interface li{
+    font-size:13px;
+    margin:2px 0;
+    line-height:1.4;
+    font-weight: bold;
+}
+.interface li a{
+    color: #ffffff;
+}
+/***** TONIC-SOLFA SECTION *****/
+.tonic-solfa{
+  display: none;
+  background: #000000;
+  border-radius: 5px;
+  width: 70%;
+  max-width: 400px;
+  margin: 75% auto -60% auto;
+  padding: 55px 20px; 
+  color: white;
+}
+.tonic-solfa span{
+  font-size: 18px;
+  font-weight: 900;
+}
+.tonic-solfa p{
+  font-size:15px;
+  font-weight: 500;
+}  
+.tonic-solfa button{
+    background: #fffff;
+    color: #000000;
+    border: none;
+    border-radius: 30px;
+    padding: 10px;
+    box-shadow: 0 0 5px #ffffff;
+    font-weight: bold;
+    margin: 10px 0 0 145px;
+}
+.tonic-key{
+    font-size: 16px;
+    font-weight: 900;
+}
+/******  FAVORITE SECTION ******/
+.favorite-btn{
+    font-size:28px;
+    color:#888;
+    cursor:pointer;
+    margin-left:10px;
+    transition:.25s;
+}
+.favorite-btn.active{
+    color: #e53935;
+}
+.favorite-title{
+    text-align:center;
+    margin:230px auto -220px auto;
+    display: none;
+}
+.favorite-title h2{
+    color: #ffffff;
+    font-family: 'Cinzel', serif;
+    font-size:23px;
+    font-weight:900;
+}
