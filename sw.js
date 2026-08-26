@@ -1,4 +1,4 @@
-const CACHE_NAME = "sda-solfa-v9";
+const CACHE_NAME = "sda-solfa-v10";
 
 const APP_FILES = [
     "/",
